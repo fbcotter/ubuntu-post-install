@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Dropbox
+function shell {
+	dir="$(dirname "$0")"
+
+	# Set the shell to be fish
+	chsh -s $(which fish)
+	cp $dir/data/dotfiles/config.fish ~/.config/fish/
+
+	# Set the terminal to have solarized colours 
+	mkdir -p $dir/solarized
+	git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git $dir/solarized
+	$dir/solarized/install.sh
+    rm -rf $dir/solarized
+	
+	# Install vim settings
+	mkdir -p ~/.vim/bundle
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	cp $dir/data/dotfiles/vimrc ~/.vimrc
+	vim +PluginInstall +qall	
+
+	# Done
+	show_success 'Done.'
+	whiptail --title "Finished" --msgbox "Shell & vim customization complete." 8 78
+	main
+}

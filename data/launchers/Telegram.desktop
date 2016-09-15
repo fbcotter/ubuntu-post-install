@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Icon[en_GB]=/opt/Telegram/telegram128.png
+Name[en_GB]=Telegram
+Exec=/opt/Telegram/Telegram
+Name=Telegram
+Icon=/opt/Telegram/telegram128.png

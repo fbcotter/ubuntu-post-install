@@ -39,6 +39,7 @@ dir="$(dirname "$0")"
 . $dir/functions/thirdparty
 . $dir/functions/update
 . $dir/functions/utilities
+. $dir/functions/shell
 
 #----- Fancy Messages -----#
 show_error(){
@@ -77,6 +78,7 @@ function main {
         utilities   'Install preferred system utilities' \
         development 'Install preferred development tools' \
         codecs      'Install Ubuntu Restricted Extras' \
+        shell       'Customize vim & shell' \
         thirdparty  'Install third-party applications' \
         gnome       'Install latest GNOME software' \
         configure   'Configure system' \

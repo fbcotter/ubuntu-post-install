@@ -12,3 +12,6 @@ ssh
 symlinks
 synaptic
 tlp
+fish
+lynx
+linux-image-extra-$(uname -r) linux-image-extra-virtual
