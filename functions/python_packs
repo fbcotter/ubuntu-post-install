@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Dropbox
+function python_packs {
+	dir="$(dirname "$0")"
+
+    pip install $(cat $dir/data/pythonapps.list)
+    pip3 install $(cat $dir/data/pythonapps.list)
+
+}

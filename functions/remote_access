@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Dropbox
+function shell {
+	dir="$(dirname "$0")"
+
+	# Install remmina latest version
+    sudo apt-add-repository ppa:remmina-ppa-team/remmina-next
+    sudo apt-get update
+    sudo apt-get install remmina remmina-plugin-rdp libfreerdp-plugins-standard
+
+    # Install xrdp
+	sudo apt-get -y install xrdp
+    sudo systemctl start xrdp
+    sudo systmctl enable xrdp
+    echo unity>~/.session
+
+	# Done
+	show_success 'Done.'
+	whiptail --title "Finished" --msgbox "Shell & vim customization complete." 8 78
+	main
+}

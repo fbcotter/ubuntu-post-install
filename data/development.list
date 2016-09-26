@@ -11,3 +11,9 @@ npm
 optipng
 x11-apps
 vim
+python-pip
+python3-pip
+virtualenv
+python-tk idle python-pmw python-imaging
+python3-tk
+
