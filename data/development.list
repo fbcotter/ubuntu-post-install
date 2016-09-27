@@ -16,4 +16,4 @@ python3-pip
 virtualenv
 python-tk idle python-pmw python-imaging
 python3-tk
-
+texlive-latex-base

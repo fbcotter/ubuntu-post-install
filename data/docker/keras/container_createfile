@@ -1,0 +1,3 @@
+docker create -v /host/code:/host/code -v /host/datasets:/host/datasets \
+-v /host/results:/host/results -p 12000:8888 -p 12001:8889 -p 12002:6006 \
+-p 12003:6007 -it --name tf9 fbcotter/tensorflow /bin/bash
