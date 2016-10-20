@@ -14,7 +14,7 @@ synaptic
 tlp
 fish
 lynx
-linux-image-extra-$(uname -r) linux-image-extra-virtual
 screen
 trash-cli
 xclip
+lacheck

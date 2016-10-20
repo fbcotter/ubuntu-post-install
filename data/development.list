@@ -10,7 +10,7 @@ nodejs
 npm
 optipng
 x11-apps
-vim
+vim-gnome
 python-pip
 python3-pip
 virtualenv

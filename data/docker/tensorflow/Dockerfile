@@ -2,8 +2,8 @@ FROM tensorflow/tensorflow:r0.9
 MAINTAINER Fergal Cotter <fbcotter.cam@gmail.com>
 RUN apt-get update -y
 RUN apt-get -qq update
-RUN apt-get install -y curl
-RUN apt-get install -y git
+RUN apt-get install -y curl make
+RUN apt-get update && apt-get install -y wget git-core
 RUN apt-get install -y vim
 RUN apt-get install -y man
 RUN apt-get install -y bc

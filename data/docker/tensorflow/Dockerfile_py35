@@ -1,0 +1,65 @@
+FROM ubuntu:16.04
+
+MAINTAINER Fergal Cotter <fbc23@cam.ac.uk>
+
+RUN apt-get update
+RUN apt-get -qq update
+RUN apt-get install -y curl make
+
+# Installing the 'apt-utils' package gets rid of the 'debconf: delaying package configuration, since apt-utils is not installed'
+# error message when installing any other package with the apt-get package manager.
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    apt-utils \
+ && rm -rf /var/lib/apt/lists/*
+
+# Core linux dependencies. Some of these taken from the Tensorflow Dockerfile
+RUN apt-get install -y --no-install-recommends \
+	wget \
+	git-core \
+	build-essential \
+	libfreetype6-dev \
+	libpng12-dev \
+        libzmq3-dev \
+        pkg-config \
+	python3 \
+ 	python3-dev \
+        rsync \
+        software-properties-common \
+        unzip 
+
+RUN apt-get clean
+
+RUN apt-get install -y python3-pip
+RUN pip3 install --upgrade pip
+
+RUN pip3 --no-cache-dir install \
+	ipykernel \
+        jupyter \
+        matplotlib \
+        numpy \
+        scipy \
+        && \
+    python3 -m ipykernel.kernelspec
+
+# Install TensorFlow CPU version from central repo
+RUN pip3 --no-cache-dir install --upgrade \
+	https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp35-cp35m-linux_x86_64.whl
+
+##### Some other nice dependencies
+RUN apt-get install -y vim
+RUN apt-get install -y man
+RUN apt-get install -y bc
+RUN apt-get install -y libhdf5-dev
+
+# Get h5py for loading and saving .hdf5 data files
+RUN pip install h5py
+RUN pip install hdf5storage
+RUN pip install dtcwt
+
+
+# Move in some local config files for customizing
+RUN mkdir -p /root/.vim/bundle
+RUN git clone https://github.com/VundleVim/Vundle.vim.git /root/.vim/bundle/Vundle.vim
+ADD vimrc /root/.vimrc
+ADD .bash_profile /root/.bash_profile
+RUN vim +PluginInstall +qall
